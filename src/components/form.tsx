@@ -1,4 +1,4 @@
-import { Button, Stack, TextField } from "@mui/material";
+import { Box, Button, Stack, TextField } from "@mui/material";
 import type { Field } from "../types/field";
 import { Fragment } from "react/jsx-runtime";
 import { v4 as uuidv4 } from "uuid";
@@ -36,7 +36,12 @@ export default function Form() {
 
   return (
     fields.length > 0 && (
-      <form>
+      <Box
+        component="form"
+        sx={{
+          mt: 4,
+        }}
+      >
         <Stack gap={2}>
           {fields.map((item) => (
             <Fragment key={uuidv4()}>{renderField(item)}</Fragment>
@@ -45,7 +50,7 @@ export default function Form() {
             Submit
           </Button>
         </Stack>
-      </form>
+      </Box>
     )
   );
 }
