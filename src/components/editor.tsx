@@ -1,6 +1,7 @@
 import { Paper } from "@mui/material";
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
+import { FieldTypes, type Field } from "../types/field";
 
 export default function Editor() {
   const { setFields } = useEditor();
@@ -10,7 +11,23 @@ export default function Editor() {
 
     try {
       const parsedFields = JSON.parse(value as string);
-      setFields(parsedFields);
+
+      function validateField(field: Field) {
+        const hasNameAndType = field?.type && field?.name; // If type and name exist and are not empty strings.
+        const typeIsValid = Object.values(FieldTypes).includes(field.type); // If the type is one of the valid types defined in FieldTypes.
+
+        if (hasNameAndType && typeIsValid) {
+          return true;
+        }
+
+        return false;
+      }
+
+      const validatedFields = parsedFields.filter((field: Field) =>
+        validateField(field),
+      );
+
+      setFields(validatedFields);
     } catch {}
   }
 
