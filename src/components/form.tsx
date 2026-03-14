@@ -21,16 +21,17 @@ export default function Form() {
   }
 
   return (
-    <form>
-      <Stack gap={2}>
-        {fields.length > 0 &&
-          fields.map((item) => (
+    fields.length > 0 && (
+      <form>
+        <Stack gap={2}>
+          {fields.map((item) => (
             <Fragment key={uuidv4()}>{renderField(item)}</Fragment>
           ))}
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
-      </Stack>
-    </form>
+          <Button type="submit" variant="contained">
+            Submit
+          </Button>
+        </Stack>
+      </form>
+    )
   );
 }
