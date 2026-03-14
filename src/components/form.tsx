@@ -7,13 +7,27 @@ import { useEditor } from "../context/editor-context";
 export default function Form() {
   const { fields } = useEditor();
 
-  function renderField({ type, name, label }: Field) {
+  function renderField({ type, name, label, disabled }: Field) {
     switch (type) {
       case "text":
-        return <TextField type="text" name={name} label={label} />;
+        return (
+          <TextField
+            type="text"
+            name={name}
+            label={label}
+            disabled={disabled}
+          />
+        );
       case "textarea":
         return (
-          <TextField type="text" name={name} label={label} multiline rows={6} />
+          <TextField
+            type="text"
+            name={name}
+            label={label}
+            multiline
+            rows={6}
+            disabled={disabled}
+          />
         );
       default:
         return null;
