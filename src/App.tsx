@@ -1,7 +1,15 @@
 import "./App.css";
+import { Container } from "@mui/material";
+import Header from "./components/header";
+import Editor from "./components/editor";
 
-function App() {
-  return <>App</>;
+export default function App() {
+  return (
+    <>
+      <Container>
+        <Header />
+        <Editor />
+      </Container>
+    </>
+  );
 }
-
-export default App;
