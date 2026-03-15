@@ -35,6 +35,7 @@ export default function Editor() {
     <Paper
       sx={{
         p: 2,
+        flex: 2,
       }}
     >
       <MonacoEditor
