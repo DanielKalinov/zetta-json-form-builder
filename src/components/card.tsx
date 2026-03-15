@@ -8,7 +8,7 @@ export default function Card({
 }: {
   label: string;
   children: ReactNode;
-  sx: SxProps;
+  sx?: SxProps;
 }) {
   return (
     <Paper
