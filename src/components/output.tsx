@@ -7,7 +7,12 @@ export default function Output() {
   const values = watch();
 
   return (
-    <Card label="Output (JSON)">
+    <Card
+      label="Output (JSON)"
+      sx={{
+        overflowX: "auto",
+      }}
+    >
       <pre>
         <code>{JSON.stringify(values)}</code>
       </pre>
