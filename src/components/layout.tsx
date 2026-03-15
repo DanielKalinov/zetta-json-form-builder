@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Paper, Typography } from "@mui/material";
 import { useEditor } from "../context/editor-context";
 import Fields from "./fields";
 import { FormProvider, useForm } from "react-hook-form";
@@ -18,9 +18,6 @@ export default function Layout() {
     <Box
       component="form"
       onSubmit={methods.handleSubmit((data) => console.log(data))}
-      sx={{
-        flex: 1,
-      }}
     >
       <Fields />
       <Button
@@ -35,13 +32,7 @@ export default function Layout() {
       </Button>
     </Box>
   ) : (
-    <Box
-      sx={{
-        flex: 1,
-      }}
-    >
-      <Typography>No fields to display</Typography>
-    </Box>
+    <Typography>No fields to display</Typography>
   );
 
   return (
@@ -60,7 +51,14 @@ export default function Layout() {
           }}
         >
           <Editor />
-          {form}
+          <Paper
+            sx={{
+              p: 3,
+              flex: 1,
+            }}
+          >
+            {form}
+          </Paper>
         </Box>
         <Output />
       </Box>

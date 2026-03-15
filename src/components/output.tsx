@@ -1,16 +1,18 @@
+import { Paper } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 export default function Output() {
-  const {
-    getValues,
-    formState: { isSubmitted },
-  } = useFormContext();
+  const { getValues } = useFormContext();
 
   return (
-    isSubmitted && (
+    <Paper
+      sx={{
+        p: 3,
+      }}
+    >
       <pre>
         <code>{JSON.stringify(getValues())}</code>
       </pre>
-    )
+    </Paper>
   );
 }

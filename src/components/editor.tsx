@@ -34,7 +34,7 @@ export default function Editor() {
   return (
     <Paper
       sx={{
-        p: 2,
+        p: 3,
         flex: 2,
       }}
     >
