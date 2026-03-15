@@ -57,6 +57,7 @@ export default function Layout() {
               flex: 1,
             }}
           >
+            <Typography mb={2}>Form</Typography>
             {form}
           </Paper>
         </Box>

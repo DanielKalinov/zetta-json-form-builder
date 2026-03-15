@@ -1,4 +1,4 @@
-import { Paper } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
 import { FieldTypes, type Field } from "../types/field";
@@ -38,6 +38,7 @@ export default function Editor() {
         flex: 2,
       }}
     >
+      <Typography mb={2}>Editor (JSON)</Typography>
       <MonacoEditor
         height="50vh"
         defaultLanguage="json"
