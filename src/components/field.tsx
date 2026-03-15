@@ -8,7 +8,7 @@ import {
   FormControl,
   FormLabel,
 } from "@mui/material";
-import type { DropdownOption, Field } from "../types/field";
+import type { Option, Field } from "../types/field";
 import { useFormContext } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
 
@@ -50,7 +50,7 @@ export default function Field({ field }: { field: Field }) {
             defaultValue=""
             disabled={disabled}
           >
-            {options?.map(({ value, label }: DropdownOption) => (
+            {options?.map(({ value, label }: Option) => (
               <MenuItem key={uuidv4()} value={value}>
                 {label}
               </MenuItem>

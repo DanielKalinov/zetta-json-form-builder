@@ -2,11 +2,11 @@ export type Field = {
   type: FieldType;
   name: string;
   label?: string;
-  options?: DropdownOption[];
+  options?: Option[];
   disabled?: boolean;
 };
 
-export type DropdownOption = {
+export type Option = {
   value: string;
   label: string;
 };
