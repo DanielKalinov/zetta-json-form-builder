@@ -1,4 +1,13 @@
-import { TextField, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
+import {
+  TextField,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  FormControl,
+  FormLabel,
+} from "@mui/material";
 import type { DropdownOption, Field } from "../types/field";
 import { useFormContext } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
@@ -54,6 +63,22 @@ export default function Field({ field }: { field: Field }) {
             control={<Checkbox {...register(name)} disabled={disabled} />}
             label={label}
           />
+        );
+      case "radio":
+        return (
+          <FormControl component="fieldset" disabled={disabled}>
+            <FormLabel component="legend">{label}</FormLabel>
+            <RadioGroup name={name}>
+              {options?.map((option) => (
+                <FormControlLabel
+                  key={uuidv4()}
+                  value={option.value}
+                  label={option.label}
+                  control={<Radio {...register(name)} disabled={disabled} />}
+                />
+              ))}
+            </RadioGroup>
+          </FormControl>
         );
       default:
         return null;
