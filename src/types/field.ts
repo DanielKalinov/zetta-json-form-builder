@@ -16,7 +16,7 @@ export const FieldTypes = {
   textarea: "textarea",
   dropdown: "dropdown",
   checkbox: "checkbox",
-  radioButton: "radio-button",
+  radio: "radio",
 } as const;
 
 type FormFieldTypesMap = typeof FieldTypes;
