@@ -1,4 +1,4 @@
-import { Divider, Paper, Typography, type SxProps } from "@mui/material";
+import { Paper, Typography, type SxProps } from "@mui/material";
 import type { ReactNode } from "react";
 
 export default function Card({
