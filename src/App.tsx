@@ -1,8 +1,7 @@
 import "./App.css";
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import Header from "./components/header";
-import Editor from "./components/editor";
-import Form from "./components/form";
+import Layout from "./components/layout";
 import { EditorProvider } from "./context/editor-context";
 
 export default function App() {
@@ -10,10 +9,7 @@ export default function App() {
     <EditorProvider>
       <Container>
         <Header />
-        <Box sx={{ display: "flex", gap: 4 }}>
-          <Editor />
-          <Form />
-        </Box>
+        <Layout />
       </Container>
     </EditorProvider>
   );
