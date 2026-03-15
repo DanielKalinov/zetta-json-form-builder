@@ -2,7 +2,9 @@ import { Paper, Typography } from "@mui/material";
 import { useFormContext } from "react-hook-form";
 
 export default function Output() {
-  const { getValues } = useFormContext();
+  const { watch } = useFormContext();
+
+  const values = watch();
 
   return (
     <Paper
@@ -12,7 +14,7 @@ export default function Output() {
     >
       <Typography mb={2}>Output (JSON)</Typography>
       <pre>
-        <code>{JSON.stringify(getValues())}</code>
+        <code>{JSON.stringify(values)}</code>
       </pre>
     </Paper>
   );
