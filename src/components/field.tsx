@@ -1,4 +1,4 @@
-import { TextField, MenuItem } from "@mui/material";
+import { TextField, MenuItem, FormControlLabel, Checkbox } from "@mui/material";
 import type { DropdownOption, Field } from "../types/field";
 import { useFormContext } from "react-hook-form";
 import { v4 as uuidv4 } from "uuid";
@@ -47,6 +47,13 @@ export default function Field({ field }: { field: Field }) {
               </MenuItem>
             )) || []}
           </TextField>
+        );
+      case "checkbox":
+        return (
+          <FormControlLabel
+            control={<Checkbox {...register(name)} disabled={disabled} />}
+            label={label}
+          />
         );
       default:
         return null;
