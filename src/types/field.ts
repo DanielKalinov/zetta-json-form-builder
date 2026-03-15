@@ -2,7 +2,13 @@ export type Field = {
   type: FieldType;
   name: string;
   label?: string;
+  options?: DropdownOption[];
   disabled?: boolean;
+};
+
+export type DropdownOption = {
+  value: string;
+  label: string;
 };
 
 export const FieldTypes = {
