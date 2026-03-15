@@ -1,9 +1,10 @@
-import { Box, Button, Paper, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useEditor } from "../context/editor-context";
 import Fields from "./fields";
 import { FormProvider, useForm } from "react-hook-form";
 import Editor from "./editor";
 import Output from "./output";
+import Card from "./card";
 
 export default function Layout() {
   const { fields } = useEditor();
@@ -51,15 +52,9 @@ export default function Layout() {
           }}
         >
           <Editor />
-          <Paper
-            sx={{
-              p: 3,
-              flex: 1,
-            }}
-          >
-            <Typography mb={2}>Form</Typography>
+          <Card label="Form" sx={{ flex: 1 }}>
             {form}
-          </Paper>
+          </Card>
         </Box>
         <Output />
       </Box>

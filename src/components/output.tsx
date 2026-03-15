@@ -1,5 +1,5 @@
-import { Paper, Typography } from "@mui/material";
 import { useFormContext } from "react-hook-form";
+import Card from "./card";
 
 export default function Output() {
   const { watch } = useFormContext();
@@ -7,15 +7,10 @@ export default function Output() {
   const values = watch();
 
   return (
-    <Paper
-      sx={{
-        p: 3,
-      }}
-    >
-      <Typography mb={2}>Output (JSON)</Typography>
+    <Card label="Output (JSON)">
       <pre>
         <code>{JSON.stringify(values)}</code>
       </pre>
-    </Paper>
+    </Card>
   );
 }

@@ -1,7 +1,7 @@
-import { Paper, Typography } from "@mui/material";
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
 import { FieldTypes, type Field } from "../types/field";
+import Card from "./card";
 
 export default function Editor() {
   const { setFields } = useEditor();
@@ -32,13 +32,12 @@ export default function Editor() {
   }
 
   return (
-    <Paper
+    <Card
+      label="Editor (JSON)"
       sx={{
-        p: 3,
         flex: 2,
       }}
     >
-      <Typography mb={2}>Editor (JSON)</Typography>
       <MonacoEditor
         height="50vh"
         defaultLanguage="json"
@@ -50,6 +49,6 @@ export default function Editor() {
         }}
         onChange={handleEditorChange}
       />
-    </Paper>
+    </Card>
   );
 }
