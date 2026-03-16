@@ -1,4 +1,5 @@
 import { Paper, Typography, type SxProps } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 import type { ReactNode } from "react";
 
 export default function Card({
@@ -8,7 +9,7 @@ export default function Card({
 }: {
   label: string;
   children: ReactNode;
-  sx?: SxProps;
+  sx?: SxProps<Theme>;
 }) {
   return (
     <Paper

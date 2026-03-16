@@ -1,4 +1,5 @@
 import type { SxProps } from "@mui/material";
+import type { Theme } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -17,7 +18,7 @@ export function useOutputAnimation(output: {}) {
     return () => clearTimeout(t);
   }, [output]);
 
-  const sx: SxProps = {
+  const sx: SxProps<Theme> = {
     animation: animate ? "pulse 0.3s ease" : "none",
     "@keyframes pulse": {
       "0%": { opacity: 1, transform: "scale(1)" },
