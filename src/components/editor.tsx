@@ -35,11 +35,12 @@ export default function Editor() {
     <Card
       label="Editor (JSON)"
       sx={{
+        display: "flex",
+        flexDirection: "column",
         flex: 2,
       }}
     >
       <MonacoEditor
-        height="50vh"
         defaultLanguage="json"
         options={{
           fontSize: 16,
