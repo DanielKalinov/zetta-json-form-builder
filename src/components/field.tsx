@@ -8,12 +8,15 @@ import {
   FormControl,
   FormLabel,
 } from "@mui/material";
-import type { Option, Field } from "../types/field";
+import type { Field } from "../types/field";
 import { useFormContext } from "react-hook-form";
 
 export default function Field({ field }: { field: Field }) {
   const { type, name, label, options, disabled } = field;
+
   const { register } = useFormContext();
+
+  const isArray = Array.isArray(options);
 
   function renderField() {
     switch (type) {
@@ -49,11 +52,13 @@ export default function Field({ field }: { field: Field }) {
             defaultValue=""
             disabled={disabled}
           >
-            {options?.map(({ value, label }, index) => (
-              <MenuItem key={`${value}-${index}`} value={value}>
-                {label}
-              </MenuItem>
-            )) || []}
+            {(isArray &&
+              options?.map(({ value, label }, index) => (
+                <MenuItem key={`${value}-${index}`} value={value}>
+                  {label}
+                </MenuItem>
+              ))) ||
+              []}
           </TextField>
         );
       case "checkbox":
@@ -68,14 +73,15 @@ export default function Field({ field }: { field: Field }) {
           <FormControl component="fieldset" disabled={disabled}>
             <FormLabel component="legend">{label}</FormLabel>
             <RadioGroup name={name}>
-              {options?.map(({ value, label }, index) => (
-                <FormControlLabel
-                  key={`${value}-${index}`}
-                  value={value}
-                  label={label}
-                  control={<Radio {...register(name)} disabled={disabled} />}
-                />
-              ))}
+              {isArray &&
+                options?.map(({ value, label }, index) => (
+                  <FormControlLabel
+                    key={`${value}-${index}`}
+                    value={value}
+                    label={label}
+                    control={<Radio {...register(name)} disabled={disabled} />}
+                  />
+                ))}
             </RadioGroup>
           </FormControl>
         );
