@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import type { Option, Field } from "../types/field";
 import { useFormContext } from "react-hook-form";
-import { v4 as uuidv4 } from "uuid";
 
 export default function Field({ field }: { field: Field }) {
   const { type, name, label, options, disabled } = field;
@@ -51,7 +50,7 @@ export default function Field({ field }: { field: Field }) {
             disabled={disabled}
           >
             {options?.map(({ value, label }: Option) => (
-              <MenuItem key={uuidv4()} value={value}>
+              <MenuItem key={value} value={value}>
                 {label}
               </MenuItem>
             )) || []}
@@ -69,11 +68,11 @@ export default function Field({ field }: { field: Field }) {
           <FormControl component="fieldset" disabled={disabled}>
             <FormLabel component="legend">{label}</FormLabel>
             <RadioGroup name={name}>
-              {options?.map((option) => (
+              {options?.map(({ value, label }) => (
                 <FormControlLabel
-                  key={uuidv4()}
-                  value={option.value}
-                  label={option.label}
+                  key={value}
+                  value={value}
+                  label={label}
                   control={<Radio {...register(name)} disabled={disabled} />}
                 />
               ))}
