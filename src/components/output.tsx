@@ -1,10 +1,8 @@
-import { useFormContext } from "react-hook-form";
 import Card from "./card";
+import { useEditor } from "../context/editor-context";
 
 export default function Output() {
-  const { watch } = useFormContext();
-
-  const values = watch();
+  const { output } = useEditor();
 
   return (
     <Card
@@ -14,7 +12,7 @@ export default function Output() {
       }}
     >
       <pre>
-        <code>{JSON.stringify(values)}</code>
+        <code>{JSON.stringify(output)}</code>
       </pre>
     </Card>
   );

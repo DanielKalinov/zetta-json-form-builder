@@ -7,7 +7,7 @@ import Output from "./output";
 import Card from "./card";
 
 export default function Layout() {
-  const { fields } = useEditor();
+  const { fields, setOutput } = useEditor();
   const methods = useForm({
     // This ensures that when a field is removed from the form, its value is also removed from the form state.
     shouldUnregister: true,
@@ -18,7 +18,7 @@ export default function Layout() {
   const form = shouldRenderForm ? (
     <Box
       component="form"
-      onSubmit={methods.handleSubmit((data) => console.log(data))}
+      onSubmit={methods.handleSubmit((data) => setOutput(data))}
     >
       <Fields />
       <Button

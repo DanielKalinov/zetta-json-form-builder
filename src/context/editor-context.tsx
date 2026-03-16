@@ -10,16 +10,19 @@ import type { Field } from "../types/field";
 
 interface EditorContextType {
   fields: Field[];
+  output: {};
   setFields: Dispatch<SetStateAction<Field[]>>;
+  setOutput: Dispatch<SetStateAction<{}>>;
 }
 
 const EditorContext = createContext<EditorContextType | undefined>(undefined);
 
 export const EditorProvider = ({ children }: { children: ReactNode }) => {
   const [fields, setFields] = useState<Field[]>([]);
+  const [output, setOutput] = useState({});
 
   return (
-    <EditorContext.Provider value={{ fields, setFields }}>
+    <EditorContext.Provider value={{ fields, output, setFields, setOutput }}>
       {children}
     </EditorContext.Provider>
   );
