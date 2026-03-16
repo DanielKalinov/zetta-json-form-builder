@@ -50,6 +50,7 @@ export default function Layout() {
           sx={{
             flex: 1,
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             gap: 3,
           }}
         >
