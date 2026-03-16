@@ -7,8 +7,8 @@ export default function Fields() {
 
   return (
     <Stack gap={2}>
-      {fields.map((field) => (
-        <Field key={field.name} field={field} />
+      {fields.map((field, index) => (
+        <Field key={`${field.name}-${index}`} field={field} />
       ))}
     </Stack>
   );

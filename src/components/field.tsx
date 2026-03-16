@@ -49,8 +49,8 @@ export default function Field({ field }: { field: Field }) {
             defaultValue=""
             disabled={disabled}
           >
-            {options?.map(({ value, label }: Option) => (
-              <MenuItem key={value} value={value}>
+            {options?.map(({ value, label }, index) => (
+              <MenuItem key={`${value}-${index}`} value={value}>
                 {label}
               </MenuItem>
             )) || []}
@@ -68,9 +68,9 @@ export default function Field({ field }: { field: Field }) {
           <FormControl component="fieldset" disabled={disabled}>
             <FormLabel component="legend">{label}</FormLabel>
             <RadioGroup name={name}>
-              {options?.map(({ value, label }) => (
+              {options?.map(({ value, label }, index) => (
                 <FormControlLabel
-                  key={value}
+                  key={`${value}-${index}`}
                   value={value}
                   label={label}
                   control={<Radio {...register(name)} disabled={disabled} />}
