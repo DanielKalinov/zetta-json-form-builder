@@ -2,9 +2,13 @@ import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
 import { FieldTypes, type Field } from "../types/field";
 import Card from "./card";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export default function Editor() {
   const { setFields } = useEditor();
+
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("md"));
 
   function handleEditorChange(value: string | undefined) {
     if (!value) setFields([]);
@@ -35,11 +39,12 @@ export default function Editor() {
     <Card
       label="Editor (JSON)"
       sx={{
-        flex: 2,
+        display: "flex",
+        flexDirection: "column",
+        flex: { xs: 1, lg: 2 },
       }}
     >
       <MonacoEditor
-        height="50vh"
         defaultLanguage="json"
         options={{
           fontSize: 16,
@@ -48,6 +53,7 @@ export default function Editor() {
           },
         }}
         onChange={handleEditorChange}
+        height={matches ? "100%" : "50vh"}
       />
     </Card>
   );

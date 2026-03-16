@@ -1,16 +1,16 @@
 import "./App.css";
-import { Container } from "@mui/material";
 import Header from "./components/header";
 import Layout from "./components/layout";
 import { EditorProvider } from "./context/editor-context";
+import AppContainer from "./components/app-container";
 
 export default function App() {
   return (
     <EditorProvider>
-      <Container>
+      <AppContainer>
         <Header />
         <Layout />
-      </Container>
+      </AppContainer>
     </EditorProvider>
   );
 }

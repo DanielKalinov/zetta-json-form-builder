@@ -40,6 +40,7 @@ export default function Layout() {
     <FormProvider {...methods}>
       <Box
         sx={{
+          flex: 1,
           display: "flex",
           flexDirection: "column",
           gap: 3,
@@ -47,7 +48,9 @@ export default function Layout() {
       >
         <Box
           sx={{
+            flex: 1,
             display: "flex",
+            flexDirection: { xs: "column", md: "row" },
             gap: 3,
           }}
         >

@@ -19,7 +19,14 @@ export default function Card({
       }}
       elevation={3}
     >
-      <Typography mb={3}>{label}</Typography>
+      <Typography
+        sx={{
+          mb: 3,
+          fontWeight: "medium",
+        }}
+      >
+        {label}
+      </Typography>
       {children}
     </Paper>
   );
