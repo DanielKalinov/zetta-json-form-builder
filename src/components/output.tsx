@@ -9,7 +9,7 @@ export default function Output() {
     <Card label="Output (JSON)">
       <MonacoEditor
         height="10vh"
-        value={JSON.stringify(output)}
+        value={JSON.stringify(output, null, 2)}
         defaultLanguage="json"
         options={{
           fontSize: 16,
