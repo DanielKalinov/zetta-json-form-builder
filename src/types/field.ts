@@ -5,6 +5,10 @@ export type Field = {
   options?: Option[];
   fields: NestedField[];
   disabled?: boolean;
+  apiConfig?: {
+    triggers: string[];
+    endpoint: string;
+  };
 };
 
 export type NestedField = Omit<Field, "fields">;

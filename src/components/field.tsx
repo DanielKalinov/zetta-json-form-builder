@@ -14,9 +14,13 @@ import {
 import type { Field, NestedField } from "../types/field";
 import { useFormContext } from "react-hook-form";
 import { Fragment } from "react/jsx-runtime";
+import { useAutoFill } from "../hooks/use-auto-fill";
 
 export default function Field({ field }: { field: Field }) {
   const { register } = useFormContext();
+  const { apiConfig } = field;
+
+  useAutoFill({ name: field.name, apiConfig });
 
   function renderField(passedField: Field | NestedField, isNested?: boolean) {
     const { type, name, label, options, disabled } = passedField;
