@@ -6,23 +6,24 @@ export const fetchMock = (endpoint: string, params?: Record<string, any>) =>
       let value: string;
 
       switch (endpoint) {
-        case "/api/geo/states":
-          const country = params?.country || "the selected country";
-          value = `State in ${country}`;
-          break;
-
         case "/api/geo/cities":
           value = faker.location.city();
           break;
-
-        case "/api/shipping/tax-rate":
-          value = `${faker.number.int({ min: 5, max: 15 })}%`;
+        case "/api/geo/countries":
+          value = faker.location.country();
           break;
-
-        case "/api/company/details":
-          value = faker.company.catchPhrase();
+        case "/api/person/name":
+          value = faker.person.fullName();
           break;
-
+        case "/api/person/email":
+          value = faker.internet.email();
+          break;
+        case "/api/company/name":
+          value = faker.company.name();
+          break;
+        case "/api/address/street":
+          value = faker.location.streetAddress();
+          break;
         default:
           value = "Default Mock Value";
       }
