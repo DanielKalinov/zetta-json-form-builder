@@ -1,5 +1,6 @@
 import { useFormContext, useWatch } from "react-hook-form";
 import type { Field } from "../types/field";
+import { fetchMock } from "../utils/fetch-mock";
 
 interface useAutoFillProps {
   name: Field["name"];
@@ -17,5 +18,9 @@ export function useAutoFill({ name, apiConfig }: useAutoFillProps) {
   const allFilled =
     watchedValues.length > 0 && watchedValues.every((value) => value);
 
-  if (allFilled) setValue(name, "API response");
+  if (allFilled && apiConfig?.endpoint) {
+    fetchMock(apiConfig.endpoint).then((res) => {
+      setValue(name, res.value);
+    });
+  }
 }
