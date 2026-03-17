@@ -1,6 +1,6 @@
 import { faker } from "@faker-js/faker";
 
-export const fetchMock = (endpoint: string, params?: Record<string, any>) =>
+export const fetchMock = (endpoint: string) =>
   new Promise<{ value: string }>((resolve) => {
     setTimeout(() => {
       let value: string;
