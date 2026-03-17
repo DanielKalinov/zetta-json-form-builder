@@ -96,29 +96,31 @@ export default function Field({ field }: { field: Field }) {
         );
       case "group":
         return (
-          <Box
-            sx={{
-              border: "solid 1px",
-              borderRadius: 1,
-              p: 2,
-            }}
-          >
-            <Typography
+          !isNested && (
+            <Box
               sx={{
-                mb: 3,
+                border: "solid 1px",
+                borderRadius: 1,
+                p: 2,
               }}
             >
-              {label}
-            </Typography>
-            <Stack gap={2}>
-              {Array.isArray(fields) &&
-                fields?.map((item: NestedField, index) => (
-                  <Fragment key={`${item.name}-${index}`}>
-                    {renderField(item, true)}
-                  </Fragment>
-                ))}
-            </Stack>
-          </Box>
+              <Typography
+                sx={{
+                  mb: 3,
+                }}
+              >
+                {label}
+              </Typography>
+              <Stack gap={2}>
+                {Array.isArray(fields) &&
+                  fields?.map((item: NestedField, index) => (
+                    <Fragment key={`${item.name}-${index}`}>
+                      {renderField(item, true)}
+                    </Fragment>
+                  ))}
+              </Stack>
+            </Box>
+          )
         );
 
       default:
