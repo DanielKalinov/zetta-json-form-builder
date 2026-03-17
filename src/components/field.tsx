@@ -7,25 +7,30 @@ import {
   Radio,
   FormControl,
   FormLabel,
+  Box,
+  Typography,
+  Stack,
 } from "@mui/material";
-import type { Field } from "../types/field";
+import type { Field, NestedField } from "../types/field";
 import { useFormContext } from "react-hook-form";
+import { Fragment } from "react/jsx-runtime";
 
 export default function Field({ field }: { field: Field }) {
-  const { type, name, label, options, disabled } = field;
-
   const { register } = useFormContext();
 
-  const isArray = Array.isArray(options);
+  function renderField(passedField: Field | NestedField, isNested?: boolean) {
+    const { type, name, label, options, disabled } = passedField;
+    const { fields } = passedField as Field;
 
-  function renderField() {
+    const nameRegister = isNested ? `${field.name}.${name}` : name;
+
     switch (type) {
       case "text":
         return (
           <TextField
-            {...register(name)}
+            {...register(nameRegister)}
             type="text"
-            name={name}
+            name={nameRegister}
             label={label}
             disabled={disabled}
           />
@@ -33,9 +38,9 @@ export default function Field({ field }: { field: Field }) {
       case "textarea":
         return (
           <TextField
-            {...register(name)}
+            {...register(nameRegister)}
             type="text"
-            name={name}
+            name={nameRegister}
             label={label}
             multiline
             rows={6}
@@ -45,14 +50,14 @@ export default function Field({ field }: { field: Field }) {
       case "dropdown":
         return (
           <TextField
-            {...register(name)}
+            {...register(nameRegister)}
             select
-            name={name}
+            name={nameRegister}
             label={label}
             defaultValue=""
             disabled={disabled}
           >
-            {(isArray &&
+            {(Array.isArray(options) &&
               options?.map(({ value, label }, index) => (
                 <MenuItem key={`${value}-${index}`} value={value}>
                   {label}
@@ -64,7 +69,9 @@ export default function Field({ field }: { field: Field }) {
       case "checkbox":
         return (
           <FormControlLabel
-            control={<Checkbox {...register(name)} disabled={disabled} />}
+            control={
+              <Checkbox {...register(nameRegister)} disabled={disabled} />
+            }
             label={label}
           />
         );
@@ -72,23 +79,54 @@ export default function Field({ field }: { field: Field }) {
         return (
           <FormControl component="fieldset" disabled={disabled}>
             <FormLabel component="legend">{label}</FormLabel>
-            <RadioGroup name={name}>
-              {isArray &&
+            <RadioGroup name={nameRegister}>
+              {Array.isArray(options) &&
                 options?.map(({ value, label }, index) => (
                   <FormControlLabel
                     key={`${value}-${index}`}
                     value={value}
                     label={label}
-                    control={<Radio {...register(name)} disabled={disabled} />}
+                    control={
+                      <Radio {...register(nameRegister)} disabled={disabled} />
+                    }
                   />
                 ))}
             </RadioGroup>
           </FormControl>
         );
+      case "group":
+        return (
+          !isNested && (
+            <Box
+              sx={{
+                border: "solid 1px",
+                borderRadius: 1,
+                p: 2,
+              }}
+            >
+              <Typography
+                sx={{
+                  mb: 3,
+                }}
+              >
+                {label}
+              </Typography>
+              <Stack gap={2}>
+                {Array.isArray(fields) &&
+                  fields?.map((item: NestedField, index) => (
+                    <Fragment key={`${item.name}-${index}`}>
+                      {renderField(item, true)}
+                    </Fragment>
+                  ))}
+              </Stack>
+            </Box>
+          )
+        );
+
       default:
         return null;
     }
   }
 
-  return renderField();
+  return renderField(field);
 }
