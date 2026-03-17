@@ -1,6 +1,6 @@
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
-import { FieldTypes, type Field } from "../types/field";
+import { FieldTypes, type Field, type NestedField } from "../types/field";
 import Card from "./card";
 import { useMediaQuery, useTheme } from "@mui/material";
 
@@ -16,7 +16,7 @@ export default function Editor() {
     try {
       const parsedFields = JSON.parse(value as string);
 
-      function validateField(field: Field) {
+      function validateField(field: Field | NestedField) {
         const hasNameAndType = field?.type && field?.name; // If type and name exist and are not empty strings.
         const typeIsValid = Object.values(FieldTypes).includes(field.type); // If the type is one of the valid types defined in FieldTypes.
 
@@ -27,9 +27,12 @@ export default function Editor() {
         return false;
       }
 
-      const validatedFields = parsedFields.filter((field: Field) =>
-        validateField(field),
-      );
+      const validatedFields = parsedFields
+        .filter(validateField)
+        .map((field: Field) => ({
+          ...field,
+          fields: field.fields?.filter(validateField),
+        }));
 
       setFields(validatedFields);
     } catch {}

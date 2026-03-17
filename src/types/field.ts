@@ -3,8 +3,11 @@ export type Field = {
   name: string;
   label?: string;
   options?: Option[];
+  fields: NestedField[];
   disabled?: boolean;
 };
+
+export type NestedField = Omit<Field, "fields">;
 
 export type Option = {
   value: string;
@@ -17,6 +20,7 @@ export const FieldTypes = {
   dropdown: "dropdown",
   checkbox: "checkbox",
   radio: "radio",
+  group: "group",
 } as const;
 
 type FormFieldTypesMap = typeof FieldTypes;
