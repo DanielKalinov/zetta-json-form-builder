@@ -142,20 +142,35 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
 
     case "radio":
       return (
-        <FormControl component="fieldset" disabled={disabled}>
-          <FormLabel component="legend">{label}</FormLabel>
-          <RadioGroup>
-            {Array.isArray(options) &&
-              options.map(({ value, label }, index) => (
-                <FormControlLabel
-                  key={`${value}-${index}`}
-                  value={value}
-                  label={label}
-                  control={<Radio {...register(name)} />}
-                />
-              ))}
-          </RadioGroup>
-        </FormControl>
+        <Controller
+          name={name}
+          control={control}
+          defaultValue=""
+          rules={{ required: required ? requiredMsg : false }}
+          render={({ field, fieldState: { error } }) => (
+            <FormControl
+              component="fieldset"
+              disabled={disabled || loading}
+              error={!!error}
+            >
+              <FormLabel component="legend" required={required}>
+                {label}
+              </FormLabel>
+              <RadioGroup {...field}>
+                {Array.isArray(options) &&
+                  options.map(({ value, label }, index) => (
+                    <FormControlLabel
+                      key={`${value}-${index}`}
+                      value={value}
+                      label={label}
+                      control={<Radio />}
+                    />
+                  ))}
+              </RadioGroup>
+              {error && <FormHelperText>{error.message}</FormHelperText>}
+            </FormControl>
+          )}
+        />
       );
 
     case "group":
