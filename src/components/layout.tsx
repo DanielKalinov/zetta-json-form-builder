@@ -9,6 +9,8 @@ import Card from "./card";
 export default function Layout() {
   const { fields, setOutput } = useEditor();
   const methods = useForm({
+    mode: "all",
+
     // This ensures that when a field is removed from the form, its value is also removed from the form state.
     shouldUnregister: true,
   });
@@ -19,6 +21,7 @@ export default function Layout() {
     <Box
       component="form"
       onSubmit={methods.handleSubmit((data) => setOutput(data))}
+      noValidate
     >
       <Fields />
       <Button

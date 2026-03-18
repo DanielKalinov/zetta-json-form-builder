@@ -4,11 +4,12 @@ export type Field = {
   label?: string;
   options?: Option[];
   fields: NestedField[];
-  disabled?: boolean;
   apiConfig?: {
     triggers: string[];
     endpoint: string;
   };
+  required?: boolean;
+  disabled?: boolean;
 };
 
 export type NestedField = Omit<Field, "fields">;

@@ -33,12 +33,15 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
     name: fieldName,
     label,
     options,
-    disabled,
-    apiConfig,
     fields,
+    apiConfig,
+    required,
+    disabled,
   } = field as Field;
 
   const name = parentName ? `${parentName}.${fieldName}` : fieldName;
+
+  const requiredMsg = "This field is required";
 
   const { loading } = useAutoFill({
     name,
@@ -53,10 +56,14 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          render={({ field }) => (
+          rules={{ required: required ? requiredMsg : false }}
+          render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
               label={label}
+              error={!!error}
+              helperText={error?.message}
+              required={required}
               disabled={disabled || loading}
             />
           )}
@@ -69,12 +76,16 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          render={({ field }) => (
+          rules={{ required: required ? requiredMsg : false }}
+          render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
               label={label}
               multiline
               rows={6}
+              error={!!error}
+              helperText={error?.message}
+              required={required}
               disabled={disabled || loading}
             />
           )}
