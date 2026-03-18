@@ -37,6 +37,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
     fields,
     apiConfig,
     required,
+    validations,
     disabled,
   } = field as Field;
 
@@ -57,7 +58,10 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={{ required: required ? requiredMsg : false }}
+          rules={{
+            required: required ? requiredMsg : false,
+            ...validations,
+          }}
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}

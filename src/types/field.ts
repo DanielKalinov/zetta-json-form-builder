@@ -1,3 +1,14 @@
+import type { ValidationRule } from "react-hook-form";
+
+export type ValidationRules = {
+  minLength?: ValidationRule<number>;
+  maxLength?: ValidationRule<number>;
+  pattern?: ValidationRule<RegExp>;
+  // validate?:
+  //   | Validate<any, FieldValues>
+  //   | Record<string, Validate<any, FieldValues>>;
+};
+
 export type Field = {
   type: FieldType;
   name: string;
@@ -9,6 +20,7 @@ export type Field = {
     endpoint: string;
   };
   required?: boolean;
+  validations?: ValidationRules;
   disabled?: boolean;
 };
 
