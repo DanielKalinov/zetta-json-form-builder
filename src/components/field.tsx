@@ -27,7 +27,7 @@ export default function Field({ field }: { field: Field }) {
 }
 
 function FieldRenderer({ field, parentName }: FieldRendererProps) {
-  const { register, control } = useFormContext();
+  const { control } = useFormContext();
 
   const {
     type,
