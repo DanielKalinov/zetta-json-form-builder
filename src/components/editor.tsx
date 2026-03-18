@@ -1,8 +1,9 @@
 import { Editor as MonacoEditor } from "@monaco-editor/react";
 import { useEditor } from "../context/editor-context";
-import { FieldTypes, type Field, type NestedField } from "../types/field";
+import { type Field, type NestedField } from "../types/field";
 import Card from "./card";
 import { useMediaQuery, useTheme } from "@mui/material";
+import { FieldTypes } from "../types/field-types";
 
 export default function Editor() {
   const { setFields } = useEditor();
