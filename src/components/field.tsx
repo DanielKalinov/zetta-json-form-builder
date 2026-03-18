@@ -36,14 +36,13 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
     options,
     fields,
     apiConfig,
-    required,
     validations,
     disabled,
   } = field as Field;
 
   const name = parentName ? `${parentName}.${fieldName}` : fieldName;
 
-  const requiredMsg = "This field is required";
+  const required = Boolean(validations?.required);
 
   const { loading } = useAutoFill({
     name,
@@ -59,7 +58,6 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           control={control}
           defaultValue=""
           rules={{
-            required: required ? requiredMsg : false,
             ...validations,
           }}
           render={({ field, fieldState: { error } }) => (
@@ -81,7 +79,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={{ required: required ? requiredMsg : false }}
+          rules={{ ...validations }}
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
@@ -103,7 +101,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={{ required: required ? requiredMsg : false }}
+          rules={{ ...validations }}
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
@@ -131,7 +129,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue={false}
-          rules={{ required: required ? requiredMsg : false }}
+          rules={{ ...validations }}
           render={({ field, fieldState: { error } }) => (
             <Box>
               <FormControlLabel
@@ -150,7 +148,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={{ required: required ? requiredMsg : false }}
+          rules={{ ...validations }}
           render={({ field, fieldState: { error } }) => (
             <FormControl
               component="fieldset"

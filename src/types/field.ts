@@ -1,6 +1,7 @@
 import type { ValidationRule } from "react-hook-form";
 
 export type ValidationRules = {
+  required: string | ValidationRule<boolean>;
   minLength?: ValidationRule<number>;
   maxLength?: ValidationRule<number>;
   pattern?: ValidationRule<RegExp>;
@@ -19,7 +20,6 @@ export type Field = {
     triggers: string[];
     endpoint: string;
   };
-  required?: boolean;
   validations?: ValidationRules;
   disabled?: boolean;
 };
