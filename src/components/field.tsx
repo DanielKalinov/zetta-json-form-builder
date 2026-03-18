@@ -10,6 +10,7 @@ import {
   Box,
   Typography,
   Stack,
+  FormHelperText,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
 import { Fragment } from "react";
@@ -122,9 +123,20 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
 
     case "checkbox":
       return (
-        <FormControlLabel
-          control={<Checkbox {...register(name)} disabled={disabled} />}
-          label={label}
+        <Controller
+          name={name}
+          control={control}
+          defaultValue={false}
+          rules={{ required: required ? requiredMsg : false }}
+          render={({ field, fieldState: { error } }) => (
+            <Box>
+              <FormControlLabel
+                control={<Checkbox {...field} disabled={disabled || loading} />}
+                label={label}
+              />
+              {error && <FormHelperText error>{error.message}</FormHelperText>}
+            </Box>
+          )}
         />
       );
 
