@@ -16,6 +16,7 @@ import { Controller, useFormContext } from "react-hook-form";
 import { Fragment } from "react";
 import type { Field, NestedField } from "../types/field";
 import { useAutoFill } from "../hooks/use-auto-fill";
+import { useValidationRules } from "../hooks/use-validation-rules";
 
 type FieldRendererProps = {
   field: Field | NestedField;
@@ -57,9 +58,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={{
-            ...validations,
-          }}
+          rules={useValidationRules(field.validations)}
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
