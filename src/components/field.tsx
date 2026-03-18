@@ -40,7 +40,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
 
   const name = parentName ? `${parentName}.${fieldName}` : fieldName;
 
-  useAutoFill({
+  const { loading } = useAutoFill({
     name,
     parentName,
     apiConfig,
@@ -54,7 +54,11 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           control={control}
           defaultValue=""
           render={({ field }) => (
-            <TextField {...field} label={label} disabled={disabled} />
+            <TextField
+              {...field}
+              label={label}
+              disabled={disabled || loading}
+            />
           )}
         />
       );
@@ -71,7 +75,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
               label={label}
               multiline
               rows={6}
-              disabled={disabled}
+              disabled={disabled || loading}
             />
           )}
         />
