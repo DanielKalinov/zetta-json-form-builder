@@ -15,7 +15,7 @@ export type Field = {
   name: string;
   label?: string;
   options?: Option[];
-  fields: NestedField[];
+  fields?: NestedField[];
   apiConfig?: {
     triggers: string[];
     endpoint: string;
