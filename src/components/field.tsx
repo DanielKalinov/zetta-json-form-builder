@@ -94,20 +94,30 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
 
     case "dropdown":
       return (
-        <TextField
-          {...register(name)}
-          select
-          label={label}
+        <Controller
+          name={name}
+          control={control}
           defaultValue=""
-          disabled={disabled}
-        >
-          {Array.isArray(options) &&
-            options.map(({ value, label }, index) => (
-              <MenuItem key={`${value}-${index}`} value={value}>
-                {label}
-              </MenuItem>
-            ))}
-        </TextField>
+          rules={{ required: required ? requiredMsg : false }}
+          render={({ field, fieldState: { error } }) => (
+            <TextField
+              {...field}
+              select
+              label={label}
+              error={!!error}
+              helperText={error?.message}
+              required={required}
+              disabled={disabled || loading}
+            >
+              {Array.isArray(options) &&
+                options.map(({ value, label }, index) => (
+                  <MenuItem key={`${value}-${index}`} value={value}>
+                    {label}
+                  </MenuItem>
+                ))}
+            </TextField>
+          )}
+        />
       );
 
     case "checkbox":
