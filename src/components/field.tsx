@@ -54,7 +54,6 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           type="text"
           label={label}
           disabled={disabled}
-          fullWidth
         />
       );
 
@@ -66,7 +65,6 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           multiline
           rows={6}
           disabled={disabled}
-          fullWidth
         />
       );
 
@@ -78,7 +76,6 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           label={label}
           defaultValue=""
           disabled={disabled}
-          fullWidth
         >
           {Array.isArray(options) &&
             options.map(({ value, label }, index) => (
