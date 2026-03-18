@@ -11,7 +11,7 @@ import {
   Typography,
   Stack,
 } from "@mui/material";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Fragment } from "react";
 import type { Field, NestedField } from "../types/field";
 import { useAutoFill } from "../hooks/use-auto-fill";
@@ -26,7 +26,7 @@ export default function Field({ field }: { field: Field }) {
 }
 
 function FieldRenderer({ field, parentName }: FieldRendererProps) {
-  const { register } = useFormContext();
+  const { register, control } = useFormContext();
 
   const {
     type,
@@ -49,22 +49,31 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
   switch (type) {
     case "text":
       return (
-        <TextField
-          {...register(name)}
-          type="text"
-          label={label}
-          disabled={disabled}
+        <Controller
+          name={name}
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField {...field} label={label} disabled={disabled} />
+          )}
         />
       );
 
     case "textarea":
       return (
-        <TextField
-          {...register(name)}
-          label={label}
-          multiline
-          rows={6}
-          disabled={disabled}
+        <Controller
+          name={name}
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              label={label}
+              multiline
+              rows={6}
+              disabled={disabled}
+            />
+          )}
         />
       );
 
