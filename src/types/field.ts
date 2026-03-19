@@ -1,6 +1,7 @@
 import type { FieldType } from "./field-types";
 import type { ValidationRules } from "./validation-rules";
 import type { FieldOption } from "./field-option";
+import type { FieldCondition } from "./field-condition";
 
 export type Field = {
   type: FieldType;
@@ -8,6 +9,7 @@ export type Field = {
   label?: string;
   options?: FieldOption[];
   fields?: NestedField[];
+  condition?: FieldCondition;
   apiConfig?: {
     triggers: string[];
     endpoint: string;
