@@ -12,7 +12,7 @@ import {
   Stack,
   FormHelperText,
 } from "@mui/material";
-import { Controller, useFormContext, useWatch } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { Fragment } from "react";
 import type { Field, NestedField } from "../types/field";
 import { useAutoFill } from "../hooks/use-auto-fill";
