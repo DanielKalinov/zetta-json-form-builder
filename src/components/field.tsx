@@ -17,6 +17,7 @@ import { Fragment } from "react";
 import type { Field, NestedField } from "../types/field";
 import { useAutoFill } from "../hooks/use-auto-fill";
 import { useValidationRules } from "../hooks/use-validation-rules";
+import { useFieldVisibility } from "../hooks/use-field-visibility";
 
 type FieldRendererProps = {
   field: Field | NestedField;
@@ -36,6 +37,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
     label,
     options,
     fields,
+    condition,
     apiConfig,
     validations,
     disabled,
@@ -50,6 +52,10 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
     parentName,
     apiConfig,
   });
+
+  const isVisible = useFieldVisibility(condition, control);
+
+  if (!isVisible) return null;
 
   switch (type) {
     case "text":
