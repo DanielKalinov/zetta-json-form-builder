@@ -1,4 +1,4 @@
-import type { ValidationRules } from "../types/field";
+import type { ValidationRules } from "../types/validation-rules";
 import { customValidations } from "../utils/custom-validations";
 
 export function useValidationRules(validations?: ValidationRules) {

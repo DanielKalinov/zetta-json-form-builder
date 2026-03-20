@@ -1,5 +1,5 @@
 import { useWatch, type Control } from "react-hook-form";
-import type { FieldCondition } from "../types/field";
+import type { FieldCondition } from "../types/field-condition";
 
 export const useFieldVisibility = (
   condition: FieldCondition | undefined,
