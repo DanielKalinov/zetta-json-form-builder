@@ -55,6 +55,8 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
 
   const isVisible = useFieldVisibility(condition, control);
 
+  const textRules = useValidationRules(field.validations);
+
   if (!isVisible) return null;
 
   switch (type) {
@@ -64,7 +66,7 @@ function FieldRenderer({ field, parentName }: FieldRendererProps) {
           name={name}
           control={control}
           defaultValue=""
-          rules={useValidationRules(field.validations)}
+          rules={textRules}
           render={({ field, fieldState: { error } }) => (
             <TextField
               {...field}
