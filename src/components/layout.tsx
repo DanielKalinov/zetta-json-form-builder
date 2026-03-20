@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useEditor } from "../context/editor-context";
 import Fields from "./field/fields";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, useForm, type FieldValues } from "react-hook-form";
 import Editor from "./editor";
 import Output from "./output";
 import Card from "./card";
@@ -15,12 +15,14 @@ export default function Layout() {
     shouldUnregister: true,
   });
 
+  const onSubmit = (data: FieldValues) => setOutput({ fields: [data] });
+
   const shouldRenderForm = fields.length > 0;
 
   const form = shouldRenderForm ? (
     <Box
       component="form"
-      onSubmit={methods.handleSubmit((data) => setOutput({ fields: [data] }))}
+      onSubmit={methods.handleSubmit(onSubmit)}
       noValidate
       sx={{
         display: "flex",
