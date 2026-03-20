@@ -2,6 +2,12 @@
 
 A React Single Page Application (SPA) that renders complex, interactive forms dynamically based on a JSON schema.
 
+## 📌 Project Management
+
+[GitHub Project Board](https://github.com/users/DanielKalinov/projects/3)
+
+---
+
 ## ⚙️ Installation & Setup
 
 ### 1. Install dependencies
