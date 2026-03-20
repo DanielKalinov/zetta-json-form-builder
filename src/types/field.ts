@@ -11,8 +11,8 @@ export type Field = {
   fields?: NestedField[];
   condition?: FieldCondition;
   apiConfig?: {
-    triggers: string[];
     endpoint: string;
+    triggers: string[];
   };
   validations?: ValidationRules;
   disabled?: boolean;
