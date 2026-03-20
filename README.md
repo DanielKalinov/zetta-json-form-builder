@@ -27,7 +27,7 @@ The application expects a JSON structure with the following field types: `text`,
 
 <br>
 
-### 1. Standard Inputs and Custom Validations
+### 1. Standard Inputs and Standard Validations
 Use this configuration to set up basic form fields such as text boxes, large text areas, and selection menus. This example also shows how to enforce data integrity by applying specific validation rules—like mandatory requirements or character limits—to your inputs.
 
 ```json
@@ -66,7 +66,6 @@ Use this configuration to set up basic form fields such as text boxes, large tex
   }
 ]
 ```
-
 <br>
 
 ### 2. Interactive Selection (Radio & Checkbox)
@@ -92,7 +91,6 @@ This example highlights the support for boolean and multiple-choice inputs. It a
   }
 ]
 ```
-
 <br>
 
 ### 3. Organizing Data with Nested Groups
@@ -119,7 +117,6 @@ For complex forms, you can organize related information into visually encapsulat
   }
 ]
 ```
-
 <br>
 
 ### 4. Creating Interactive Flows (Dynamic Visibility)
@@ -154,7 +151,6 @@ You can build interactive user experiences by showing or hiding entire sections 
   }
 ]
 ```
-
 <br>
 
 ### 5. Intelligent Data Integration (Auto-fill)
@@ -189,3 +185,37 @@ To improve efficiency, you can configure fields to auto-populate using data from
   }
 ]
 ```
+<br>
+
+### 6. Custom Validations & Data Integrity
+Beyond standard attributes like `required`, `maxLength` and `minLength`, the form builder supports a suite of specialized rules to enforce strict data formats. These are particularly useful for fields requiring specific patterns, such as numeric-only IDs or specialized text formats.
+<br>
+<br>
+To apply these, include a `validate` array within the `validations` object of your JSON. The engine will automatically map these strings to the corresponding logic in the application.
+<br>
+```json
+[
+  {
+    "type": "text",
+    "name": "postalCode",
+    "label": "Postal Code",
+    "validations": {
+      "validate": ["onlyNumbers", "minLength5"]
+    }
+  }
+]
+```
+
+#### Available Custom Rules:
+| Rule Key              | Description                                                                 |
+|----------------------|-----------------------------------------------------------------------------|
+| onlyNumbers          | Restricts input to numeric characters only (0-9).                           |
+| onlyLetters          | Restricts input to alphabetical characters only.                            |
+| noSpaces             | Disallows any whitespace within the field.                                  |
+| noConsecutiveSpaces  | Prevents users from entering more than one space in a row.                  |
+| startsWithCapital    | Ensures the first character is an uppercase letter.                         |
+| emailFormat          | Validates that the input follows a standard email structure.                |
+| containsNumber       | Requires the input to include at least one digit.                           |
+| containsSpecialChar  | Requires at least one special character (e.g., !, @, #).                    |
+| minLength5           | Enforces a minimum length of at least 5 characters.                         |
+| maxLength20          | Caps the input at a maximum of 20 characters.                               |
