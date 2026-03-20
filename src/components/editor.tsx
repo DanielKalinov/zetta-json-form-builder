@@ -36,7 +36,9 @@ export default function Editor() {
         }));
 
       setFields(validatedFields);
-    } catch {}
+    } catch {
+      // Do nothing
+    }
   }
 
   return (
