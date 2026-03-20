@@ -7,7 +7,6 @@ A React Single Page Application (SPA) that renders complex, interactive forms dy
 * **Real-time Rendering**: An input field at the top allows users to paste a JSON structure; the form re-renders instantly upon change. 
 * **Nested Group Support**: Recursive rendering of form groups with visual encapsulation to distinguish hierarchy.
 * **Dynamic Visibility**: Show or hide fields or groups based on the values of other fields (e.g., choosing "BUSINESS" reveals company-specific fields).
-* **Conditional Validation**: Validation rules (like Regex patterns) adapt based on other field values.
 * **Mock API Integration**: Automatic data fetching and field auto-filling triggered by specific field combinations.
 * **Structured Output**: Submitting the form generates a JSON object maintaining the original field relationships and hierarchy.
 
