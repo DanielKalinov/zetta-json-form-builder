@@ -210,7 +210,7 @@ To improve efficiency, you can configure fields to auto-populate using data from
 ]
 ```
 
-#### Endpoints Available
+#### Available Endpoints:
 
 ##### Geo
 
