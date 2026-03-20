@@ -14,9 +14,11 @@ export function useAutoFill({ name, parentName, apiConfig }: useAutoFillProps) {
   const [loading, setLoading] = useState(false);
 
   const resolvedTriggers =
-    apiConfig?.triggers?.map((trigger) =>
-      parentName ? `${parentName}.${trigger}` : trigger,
-    ) || [];
+    (Array.isArray(apiConfig?.triggers) &&
+      apiConfig?.triggers?.map((trigger) =>
+        parentName ? `${parentName}.${trigger}` : trigger,
+      )) ||
+    [];
 
   const watchedValues = useWatch({
     control,
