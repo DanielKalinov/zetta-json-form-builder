@@ -284,3 +284,6 @@ To apply these, include a `validate` array within the `validations` object of yo
 | containsSpecialChar  | Requires at least one special character (e.g., !, @, #).                    |
 | minLength5           | Enforces a minimum length of at least 5 characters.                         |
 | maxLength20          | Caps the input at a maximum of 20 characters.                               |
+
+---
+
