@@ -174,12 +174,18 @@ To improve efficiency, you can configure fields to auto-populate using data from
   {
     "type": "text",
     "name": "x",
-    "label": "Position X"
+    "label": "Position X",
+    "validations": {
+        "validate": ["onlyNumbers"]
+    }
   },
   {
     "type": "text",
     "name": "y",
-    "label": "Position Y"
+    "label": "Position Y",
+    "validations": {
+        "validate": ["onlyNumbers"]
+    }
   }
 ]
 ```
