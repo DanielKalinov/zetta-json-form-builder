@@ -20,7 +20,7 @@ export default function Layout() {
   const form = shouldRenderForm ? (
     <Box
       component="form"
-      onSubmit={methods.handleSubmit((data) => setOutput(data))}
+      onSubmit={methods.handleSubmit((data) => setOutput({ fields: [data] }))}
       noValidate
     >
       <Fields />
