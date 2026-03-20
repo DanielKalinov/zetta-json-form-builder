@@ -22,13 +22,18 @@ export default function Layout() {
       component="form"
       onSubmit={methods.handleSubmit((data) => setOutput({ fields: [data] }))}
       noValidate
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
+      }}
     >
       <Fields />
       <Button
         type="submit"
         variant="contained"
         sx={{
-          mt: 2,
+          mt: "auto",
           width: "100%",
         }}
       >
@@ -58,7 +63,10 @@ export default function Layout() {
           }}
         >
           <Editor />
-          <Card label="Form" sx={{ flex: 1 }}>
+          <Card
+            label="Form"
+            sx={{ flex: 1, display: "flex", flexDirection: "column" }}
+          >
             {form}
           </Card>
         </Box>
