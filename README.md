@@ -38,7 +38,10 @@ Use this configuration to set up basic form fields such as text boxes, large tex
     "label": "Username",
     "validations": {
       "required": "Username is required",
-      "minLength": 3
+      "minLength": {
+        "value": 3,
+        "message": "Username must be at least 3 characters long"
+      }
     }
   },
   {
@@ -46,7 +49,10 @@ Use this configuration to set up basic form fields such as text boxes, large tex
     "name": "bio",
     "label": "Biography",
     "validations": {
-      "maxLength": 200
+      "maxLength": {
+        "value": 200,
+        "message": "Biography must be no more than 200 characters long"
+      }
     }
   },
   {
