@@ -2,6 +2,30 @@
 
 A React Single Page Application (SPA) that renders complex, interactive forms dynamically based on a JSON schema.
 
+## ⚙️ Installation & Setup
+
+### 1. Install dependencies
+```bash
+npm install
+```
+
+### 2. Running the project
+```bash
+npm run dev
+```
+Then open the application in your browser (typically):
+```bash
+http://localhost:5173
+```
+
+### 3. Running Tests
+This project uses Vitest and React Testing Library.
+```bash
+npm run test
+```
+
+---
+
 ## 🚀 Key Features
 
 * **Real-time Rendering**: An input field at the top allows users to paste a JSON structure; the form re-renders instantly upon change. 
