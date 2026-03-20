@@ -164,18 +164,22 @@ To improve efficiency, you can configure fields to auto-populate using data from
 [
   {
     "type": "text",
-    "name": "zipCode",
-    "label": "Zip Code"
+    "name": "city",
+    "label": "City",
+    "apiConfig": {
+      "endpoint": "/api/geo/cities",
+      "triggers": ["x", "y"]
+    }
   },
   {
     "type": "text",
-    "name": "autoCity",
-    "label": "City (Auto-filled)",
-    "disabled": true,
-    "apiConfig": {
-      "triggers": ["zipCode"],
-      "endpoint": "/api/lookup-city"
-    }
+    "name": "x",
+    "label": "Position X"
+  },
+  {
+    "type": "text",
+    "name": "y",
+    "label": "Position Y"
   }
 ]
 ```
