@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import { useEditor } from "../context/editor-context";
+import { useEditor } from "../../context/editor-context";
 import Field from "./field";
 
 export default function Fields() {

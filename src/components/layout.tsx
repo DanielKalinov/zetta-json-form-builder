@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useEditor } from "../context/editor-context";
-import Fields from "./fields";
+import Fields from "./field/fields";
 import { FormProvider, useForm } from "react-hook-form";
 import Editor from "./editor";
 import Output from "./output";

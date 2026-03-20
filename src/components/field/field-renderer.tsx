@@ -1,34 +1,33 @@
-import {
-  TextField,
-  MenuItem,
-  FormControlLabel,
-  Checkbox,
-  RadioGroup,
-  Radio,
-  FormControl,
-  FormLabel,
-  Box,
-  Typography,
-  Stack,
-  FormHelperText,
-} from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
-import { Fragment } from "react";
-import type { Field, NestedField } from "../types/field";
-import { useAutoFill } from "../hooks/use-auto-fill";
-import { useValidationRules } from "../hooks/use-validation-rules";
-import { useFieldVisibility } from "../hooks/use-field-visibility";
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  FormHelperText,
+  FormLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Fragment } from "react/jsx-runtime";
+import type { Field, NestedField } from "../../types/field";
+import { useValidationRules } from "../../hooks/use-validation-rules";
+import { useFieldVisibility } from "../../hooks/use-field-visibility";
+import { useAutoFill } from "../../hooks/use-auto-fill";
 
 type FieldRendererProps = {
   field: Field | NestedField;
   parentName?: string;
 };
 
-export default function Field({ field }: { field: Field }) {
-  return <FieldRenderer field={field} />;
-}
-
-function FieldRenderer({ field, parentName }: FieldRendererProps) {
+export default function FieldRenderer({
+  field,
+  parentName,
+}: FieldRendererProps) {
   const { control } = useFormContext();
 
   const {
