@@ -153,7 +153,7 @@ You can build interactive user experiences by showing or hiding entire sections 
 ```
 <br>
 
-### 5. Intelligent Data Integration (Auto-fill)
+### 5. API Data Integration (Auto-fill)
 To improve efficiency, you can configure fields to auto-populate using data from an external API. By defining specific "trigger" fields, the form will automatically execute a background request as soon as those values are present, retrieving and inserting information without manual typing.
 
 ```json
@@ -185,6 +185,47 @@ To improve efficiency, you can configure fields to auto-populate using data from
   }
 ]
 ```
+
+#### Endpoints Available
+
+##### Geo
+
+| Endpoint              | Description        |
+|----------------------|------------------|
+| `/api/geo/cities`    | Random city       |
+| `/api/geo/countries` | Random country    |
+| `/api/geo/state`     | Random state      |
+| `/api/geo/zipcode`   | Random zipcode    |
+
+##### Person
+
+| Endpoint                 | Description        |
+|--------------------------|------------------|
+| `/api/person/name`       | Full name         |
+| `/api/person/email`      | Email address     |
+| `/api/person/phone`      | Phone number      |
+| `/api/person/jobTitle`   | Job title         |
+
+##### Company
+
+| Endpoint                   | Description        |
+|----------------------------|------------------|
+| `/api/company/name`        | Company name      |
+| `/api/company/catchPhrase` | Company slogan    |
+
+##### Address
+
+| Endpoint                    | Description              |
+|-----------------------------|------------------------|
+| `/api/address/street`       | Street address          |
+| `/api/address/fullAddress`  | Full address (street + city) |
+
+##### Internet
+
+| Endpoint                   | Description        |
+|----------------------------|------------------|
+| `/api/internet/username`   | Username          |
+| `/api/internet/url`        | URL               |
 <br>
 
 ### 6. Custom Validations & Data Integrity
